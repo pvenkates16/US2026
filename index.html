@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>American Grand Tour — Summer 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0F;
+    --gold: #C9A84C;
+    --white: #ffffff;
+    --dc: #0A1628;
+    --park: #1A2E0A;
+    --sfo: #3D0C02;
+    --nyc: #1A1A1A;
+    --dc-accent: #C9A84C;
+    --park-accent: #E8A838;
+    --sfo-accent: #FFD700;
+    --nyc-accent: #FF6B35;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 680px; margin: 0 auto; padding: 32px 16px; }
+
+  /* Header */
+  .header { text-align: center; margin-bottom: 36px; }
+  .header .tag { font-size: 11px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600; margin-bottom: 8px; }
+  .header h1 {
+    font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 900;
+    line-height: 1.1; margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #C9A84C 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .route { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  .header .meta { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 4px; }
+
+  /* Info boxes */
+  .info-box {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 16px; margin-bottom: 16px;
+  }
+  .info-box .label {
+    font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase;
+    letter-spacing: 0.12em; font-weight: 700; margin-bottom: 10px;
+  }
+  .travelers {
+    display: flex; flex-wrap: wrap; gap: 6px 16px;
+    font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6;
+  }
+  .travelers strong { color: #fff; }
+  .travelers .sep { color: rgba(255,255,255,0.15); }
+
+  /* Flight timeline */
+  .flight-row {
+    display: flex; align-items: center; gap: 10px; padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .flight-row:last-child { border-bottom: none; }
+  .flight-row .icon { font-size: 16px; flex-shrink: 0; }
+  .flight-row .info { flex: 1; min-width: 0; }
+  .flight-row .route-text { font-size: 12.5px; color: #fff; font-weight: 600; }
+  .flight-row .note { font-size: 11px; color: rgba(255,255,255,0.4); }
+  .flight-row .date { font-size: 11.5px; color: rgba(255,255,255,0.5); font-weight: 600; white-space: nowrap; }
+
+  /* Leg cards */
+  .legs { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .leg {
+    border-radius: 14px; overflow: hidden; transition: all 0.3s ease;
+    border: 1.5px solid rgba(255,255,255,0.06); cursor: pointer;
+  }
+  .leg.active { border-color: rgba(255,255,255,0.12); }
+  .leg-header { padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
+  .leg-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
+  .leg-info { flex: 1; }
+  .leg-city { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 800; }
+  .leg-subtitle { font-size: 11px; color: rgba(255,255,255,0.35); font-style: italic; margin-left: 8px; }
+  .leg-meta { display: flex; gap: 12px; margin-top: 4px; flex-wrap: wrap; }
+  .leg-dates { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .leg-count { font-size: 12px; font-weight: 600; }
+  .leg-chevron {
+    transition: transform 0.3s; display: flex; flex-shrink: 0; margin-top: 4px;
+  }
+  .leg.active .leg-chevron { transform: rotate(180deg); }
+
+  /* People badges */
+  .people-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .badge {
+    font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* Leg content */
+  .leg-content { padding: 0 20px 20px; display: none; animation: fadeIn 0.3s ease; }
+  .leg.active .leg-content { display: block; }
+
+  .info-cards { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .info-card {
+    background: rgba(255,255,255,0.07); border-radius: 8px; padding: 10px 14px;
+    flex: 1 1 200px;
+  }
+  .info-card .card-label {
+    font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 600; margin-bottom: 4px;
+  }
+  .info-card .card-title { font-size: 13px; color: #fff; font-weight: 600; }
+  .info-card .card-detail { font-size: 11.5px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .info-card .card-body { font-size: 12.5px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+  /* Collapsible sections */
+  .section-toggle {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; cursor: pointer; color: #fff; font-size: 13px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif; letter-spacing: 0.03em; margin-bottom: 8px;
+    transition: background 0.2s;
+  }
+  .section-toggle:hover { background: rgba(255,255,255,0.1); }
+  .section-toggle .chevron { transition: transform 0.3s; display: flex; }
+  .section-toggle.open .chevron { transform: rotate(180deg); }
+  .section-body { display: none; padding: 8px 4px 4px; }
+  .section-toggle.open + .section-body { display: block; }
+
+  /* Dining & sight items */
+  .item { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .item:last-child { border-bottom: none; }
+  .item-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .item-name { font-weight: 700; font-size: 13.5px; color: #fff; }
+  .item-tag { font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 500; }
+  .item-price { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 600; white-space: nowrap; }
+  .item-time {
+    font-size: 11px; background: rgba(255,255,255,0.08); padding: 2px 8px;
+    border-radius: 4px; color: rgba(255,255,255,0.5); font-weight: 500;
+  }
+  .item-note { font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 3px; line-height: 1.5; }
+  .dining-row { display: flex; gap: 10px; }
+  .dining-row .item-info { flex: 1; }
+
+  /* Tips */
+  .tip { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.55; padding: 3px 0 3px 16px; position: relative; }
+  .tip::before { content: '›'; position: absolute; left: 0; font-weight: 700; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 28px; }
+  .stat {
+    text-align: center; background: rgba(255,255,255,0.03); border-radius: 10px; padding: 14px 8px;
+  }
+  .stat-value { font-size: 22px; font-weight: 800; font-family: 'Playfair Display', serif; color: var(--gold); }
+  .stat-label {
+    font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 600; margin-top: 4px;
+  }
+
+  .footer { text-align: center; font-size: 11px; color: rgba(255,255,255,0.2); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 480px) {
+    .header h1 { font-size: 26px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .info-cards { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="tag">Summer 2026</div>
+    <h1>American Grand Tour</h1>
+    <div class="route">Copenhagen → D.C. → Yellowstone &amp; Grand Teton → San Francisco → New York → D.C. → Home</div>
+    <div class="meta">July 12 – September 7 · 58 days · 4 cities · 2 national parks</div>
+  </div>
+
+  <!-- TRAVELERS -->
+  <div class="info-box">
+    <div class="label">Travelers</div>
+    <div class="travelers">
+      <span><strong>Rama &amp; Prabhu</strong> — full trip (Jul 12 – Sep 7)</span>
+      <span class="sep">|</span>
+      <span><strong>Ambi</strong> — Jul 12 – Aug 10</span>
+      <span class="sep">|</span>
+      <span><strong>Maneesh</strong> — 1 week during parks</span>
+      <span class="sep">|</span>
+      <span><strong>Ruby &amp; Scott</strong> — parks leg</span>
+    </div>
+  </div>
+
+  <!-- ROUTE OVERVIEW -->
+  <div class="info-box" style="margin-bottom:28px">
+    <div class="label">Route Overview</div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Copenhagen (CPH) → Washington (IAD)</div><div class="note">SAS/United direct ~9.5h</div></div><div class="date">Jul 12</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Washington (IAD) → Jackson Hole (JAC)</div><div class="note">Via Denver/Dallas ~5-6h</div></div><div class="date">Jul 15</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Jackson Hole (JAC) → San Francisco (SFO)</div><div class="note">Via DEN/SLC ~4-5h</div></div><div class="date">Jul 25</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">San Francisco (SFO) → New York (JFK)</div><div class="note">Direct ~5.5h</div></div><div class="date">Aug 1</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">New York (JFK) → Washington (IAD)</div><div class="note">Flight ~1.5h or Amtrak ~3h</div></div><div class="date">Aug 8</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Washington (IAD) → Copenhagen (CPH)</div><div class="note">SAS direct or connect ~9.5h</div></div><div class="date">Sep 7</div></div>
+  </div>
+
+  <!-- LEG CARDS -->
+  <div class="legs">
+
+    <!-- ========== DC INTRO ========== -->
+    <div class="leg active" style="background:var(--dc)" data-accent="var(--dc-accent)" onclick="toggleLeg(this)">
+      <div class="leg-header">
+        <div class="leg-icon">🏛️</div>
+        <div class="leg-info">
+          <span class="leg-city">Washington, D.C.</span><span class="leg-subtitle">Quick intro</span>
+          <div class="leg-meta">
+            <span class="leg-dates">Jul 12 – Jul 15</span>
+            <span class="leg-count" style="color:var(--dc-accent)">3 nights · 3 guests</span>
+          </div>
+          <div class="people-badges">
+            <span class="badge" style="background:rgba(201,168,76,0.25);color:var(--dc-accent);border-color:rgba(201,168,76,0.35)">Rama</span>
+            <span class="badge" style="background:rgba(201,168,76,0.25);color:var(--dc-accent);border-color:rgba(201,168,76,0.35)">Prabhu</span>
+            <span class="badge" style="background:rgba(201,168,76,0.25);color:var(--dc-accent);border-color:rgba(201,168,76,0.35)">Ambi</span>
+          </div>
+        </div>
+        <div class="leg-chevron" style="color:var(--dc-accent)"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></div>
+      </div>
+      <div class="leg-content">
+        <div class="info-cards">
+          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ CPH → IAD (Dulles)</div><div class="card-detail">SAS or United direct — ~9.5 hrs</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">7705 Marbury Road, Bethesda, MD. ~20 min to downtown DC via Red Line Metro from Bethesda station.</div></div>
+        </div>
+        <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 5 picks<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">minibar by José Andrés</span><span class="item-tag">Avant-garde tasting — DC</span></div><div class="item-note">Seats only 12 — wildly inventive multi-course experience. Book months ahead.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Tail Up Goat</span><span class="item-tag">Mediterranean — DC</span></div><div class="item-note">Creative cooking in Adams Morgan. The bread program alone is worth a visit.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Ben's Chili Bowl</span><span class="item-tag">Iconic casual — DC</span></div><div class="item-note">DC institution since 1958. The half-smoke with chili is a must-eat.</div></div><span class="item-price">$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Mon Ami Gabi</span><span class="item-tag">French bistro — Bethesda</span></div><div class="item-note">Recently renovated Bethesda classic. Excellent steak frites — close to home.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">The Salt Line</span><span class="item-tag">Seafood — Bethesda</span></div><div class="item-note">New England-inspired seafood in Bethesda. Outstanding raw bar and lobster rolls.</div></div><span class="item-price">$$$</span></div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">🗺️ Sights — 3 highlights<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="item-header"><span class="item-name">National Mall &amp; Monuments</span><span class="item-time">Full day</span></div><div class="item-note">Capitol → Washington Monument → WWII Memorial → Lincoln Memorial. Do the monuments at night too.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Smithsonian Air &amp; Space</span><span class="item-time">Half day</span></div><div class="item-note">Recently renovated. Apollo 11 capsule, Wright Flyer, Space Shuttle Discovery at Udvar-Hazy annex.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">National Gallery of Art</span><span class="item-time">Half day</span></div><div class="item-note">Da Vinci to Rothko. The I.M. Pei East Building is architecture worth the trip alone.</div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="tip" style="--accent:var(--dc-accent)">July DC is 30-35°C and humid. Start early, take midday AC breaks.</div>
+          <div class="tip">All Smithsonians are FREE.</div>
+          <div class="tip">From Bethesda: Red Line Metro (~20 min to downtown). Buy a SmarTrip card.</div>
+          <div class="tip">This is a quick intro — you'll have 30 days here at the end for deep exploration.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== PARKS ========== -->
+    <div class="leg" style="background:rgba(255,255,255,0.03)" data-bg="var(--park)" data-accent="var(--park-accent)" onclick="toggleLeg(this)">
+      <div class="leg-header">
+        <div class="leg-icon">🦬</div>
+        <div class="leg-info">
+          <span class="leg-city">Yellowstone &amp; Grand Teton</span><span class="leg-subtitle">The big adventure</span>
+          <div class="leg-meta">
+            <span class="leg-dates">Jul 15 – Jul 25</span>
+            <span class="leg-count" style="color:var(--park-accent)">10 nights · 6 guests</span>
+          </div>
+          <div class="people-badges">
+            <span class="badge" style="background:rgba(232,168,56,0.25);color:var(--park-accent);border-color:rgba(232,168,56,0.35)">Rama</span>
+            <span class="badge" style="background:rgba(232,168,56,0.25);color:var(--park-accent);border-color:rgba(232,168,56,0.35)">Prabhu</span>
+            <span class="badge" style="background:rgba(232,168,56,0.25);color:var(--park-accent);border-color:rgba(232,168,56,0.35)">Ambi</span>
+            <span class="badge" style="background:rgba(232,168,56,0.25);color:var(--park-accent);border-color:rgba(232,168,56,0.35)">Ruby</span>
+            <span class="badge" style="background:rgba(232,168,56,0.25);color:var(--park-accent);border-color:rgba(232,168,56,0.35)">Scott</span>
+            <span class="badge" style="background:rgba(232,168,56,0.15);color:rgba(255,255,255,0.5);border-color:rgba(232,168,56,0.25)">Maneesh (1 week)</span>
+          </div>
+        </div>
+        <div class="leg-chevron" style="color:var(--park-accent)"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></div>
+      </div>
+      <div class="leg-content">
+        <div class="info-cards">
+          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ IAD → Jackson Hole (JAC)</div><div class="card-detail">Via Denver or Dallas — ~5-6 hrs. Rent 2 SUVs at JAC for 6 people.</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">Split stays: Jackson Hole base (Four Seasons or luxury cabin), Jenny Lake Lodge (Grand Teton), Old Faithful Inn (Yellowstone). BOOK IMMEDIATELY.</div></div>
+        </div>
+        <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 6 picks<span class="chevron" style="color:var(--park-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Snake River Grill</span><span class="item-tag">Western fine dining</span></div><div class="item-note">Jackson's finest — elk tenderloin, bison short ribs, exceptional wine list. Book for 6.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">The Kitchen</span><span class="item-tag">Farm-to-table</span></div><div class="item-note">Wyoming-sourced seasonal dishes. Patio has jaw-dropping Teton views.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Jenny Lake Lodge Dining</span><span class="item-tag">Lodge fine dining</span></div><div class="item-note">Multi-course dinner in a log cabin beneath the Tetons. Reserve well ahead.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Persephone Bakery</span><span class="item-tag">Breakfast</span></div><div class="item-note">Jackson's beloved bakery. Flaky croissants and great coffee before big hikes.</div></div><span class="item-price">$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Old Faithful Inn Dining</span><span class="item-tag">Historic lodge</span></div><div class="item-note">Dine in the iconic log lodge, then walk outside to watch Old Faithful erupt.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Bin22</span><span class="item-tag">Wine bar &amp; tapas</span></div><div class="item-note">Excellent wine bar on Jackson's town square. Great for a relaxed evening.</div></div><span class="item-price">$$$</span></div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">🗺️ Sights — 7 highlights<span class="chevron" style="color:var(--park-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="item-header"><span class="item-name">Grand Teton Scenic Loop</span><span class="item-time">Full day</span></div><div class="item-note">Jenny Lake boat shuttle + Hidden Falls hike, Mormon Row Barns, Snake River Overlook.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Old Faithful &amp; Upper Geyser Basin</span><span class="item-time">Half day</span></div><div class="item-note">Watch eruptions (~every 90 min), walk the boardwalks past dozens more geysers.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Grand Prismatic Spring</span><span class="item-time">2 hrs</span></div><div class="item-note">Yellowstone's most photogenic spot. Hike Fairy Falls overlook — surreal rainbow colors from above.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Lamar Valley at Dawn</span><span class="item-time">Full day</span></div><div class="item-note">'Serengeti of North America.' Arrive at sunrise for wolves, grizzlies, bison herds. Bring binoculars.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Grand Canyon of Yellowstone</span><span class="item-time">Half day</span></div><div class="item-note">Artist Point and Uncle Tom's Trail for views of the thundering Lower Falls.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">String Lake &amp; Leigh Lake</span><span class="item-time">Half day</span></div><div class="item-note">Crystal alpine lakes at the Teton base. Perfect for kayaking, swimming, or a picnic.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Private Wildlife Safari</span><span class="item-time">Full day</span></div><div class="item-note">Hire a guide (Teton Science Schools). They know where the animals are — worth every penny.</div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--park-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="tip">Start every day at 6-7 AM. Best wildlife sightings + no crowds.</div>
+          <div class="tip">Buy or rent bear spray from Jackson outdoor shops. Essential for all hikes.</div>
+          <div class="tip">No cell service in parks. Download offline maps before entering.</div>
+          <div class="tip">Gas stations are sparse inside parks — fill up whenever you see one.</div>
+          <div class="tip">With 6 people and 2 SUVs, split up: half hike while half do scenic drives.</div>
+          <div class="tip">Maneesh departs by Jul 22-25 to be back at work by Aug 3. Book his return flight from JAC early.</div>
+          <div class="tip">Book a sunrise hot-air balloon over the Tetons for a once-in-a-lifetime splurge.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SFO ========== -->
+    <div class="leg" style="background:rgba(255,255,255,0.03)" data-bg="var(--sfo)" data-accent="var(--sfo-accent)" onclick="toggleLeg(this)">
+      <div class="leg-header">
+        <div class="leg-icon">🌉</div>
+        <div class="leg-info">
+          <span class="leg-city">San Francisco &amp; Bay Area</span><span class="leg-subtitle">Wine, coast &amp; cuisine</span>
+          <div class="leg-meta">
+            <span class="leg-dates">Jul 25 – Aug 1</span>
+            <span class="leg-count" style="color:var(--sfo-accent)">7 nights · 3 guests</span>
+          </div>
+          <div class="people-badges">
+            <span class="badge" style="background:rgba(255,215,0,0.2);color:var(--sfo-accent);border-color:rgba(255,215,0,0.3)">Rama</span>
+            <span class="badge" style="background:rgba(255,215,0,0.2);color:var(--sfo-accent);border-color:rgba(255,215,0,0.3)">Prabhu</span>
+            <span class="badge" style="background:rgba(255,215,0,0.2);color:var(--sfo-accent);border-color:rgba(255,215,0,0.3)">Ambi</span>
+          </div>
+        </div>
+        <div class="leg-chevron" style="color:var(--sfo-accent)"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></div>
+      </div>
+      <div class="leg-content">
+        <div class="info-cards">
+          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ JAC → SFO</div><div class="card-detail">Connect through Denver or SLC — ~4-5 hrs total</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">3 guests: luxury flat in Pacific Heights or Noe Valley. Hotels: The San Francisco Proper, Cavallo Point, or Hotel Drisco.</div></div>
+        </div>
+        <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 8 picks<span class="chevron" style="color:var(--sfo-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Benu</span><span class="item-tag">3 Michelin ★★★</span></div><div class="item-note">Corey Lee's masterpiece blending Korean, Chinese &amp; European techniques. One of America's best.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Lazy Bear</span><span class="item-tag">2 Michelin ★★</span></div><div class="item-note">Communal dinner-party tasting in the Mission. Tickets sell fast.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">State Bird Provisions</span><span class="item-tag">Michelin ★</span></div><div class="item-note">Dim sum-style small plates on carts. Creative, fun, delicious.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Swan Oyster Depot</span><span class="item-tag">Legendary raw bar</span></div><div class="item-note">18-seat counter since 1912. Line up before 10:30 AM for Dungeness crab.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Zuni Café</span><span class="item-tag">Californian icon</span></div><div class="item-note">The roast chicken with bread salad has been an SF institution for decades.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">La Taqueria</span><span class="item-tag">Mission burritos</span></div><div class="item-note">Possibly the best burrito in SF. Carne asada super burrito, no question.</div></div><span class="item-price">$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Tartine Bakery</span><span class="item-tag">Bakery</span></div><div class="item-note">Iconic morning bun and country bread. The Manufactory has a full restaurant.</div></div><span class="item-price">$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Hog Island Oyster Co.</span><span class="item-tag">Ferry Building</span></div><div class="item-note">Fresh Tomales Bay oysters with California white wine. Perfect.</div></div><span class="item-price">$$$</span></div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">🗺️ Sights — 7 highlights<span class="chevron" style="color:var(--sfo-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="item-header"><span class="item-name">Golden Gate Bridge &amp; Battery Spencer</span><span class="item-time">Half day</span></div><div class="item-note">Walk or bike across, continue to Marin side for the classic fog-over-bridge photo.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Napa &amp; Sonoma Wine Country</span><span class="item-time">1-2 days</span></div><div class="item-note">Private driver, 3-4 wineries/day. Book The French Laundry exactly 60 days out at 10 AM PT.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Muir Woods</span><span class="item-time">Half day</span></div><div class="item-note">Ancient coastal redwoods 30 min from the city. Timed parking reservation required.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Alcatraz Island</span><span class="item-time">Half day</span></div><div class="item-note">Night tour is especially atmospheric. Book weeks ahead.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Ferry Building Saturday Market</span><span class="item-time">Morning</span></div><div class="item-note">Artisan cheeses, seasonal fruit, oysters, Blue Bottle Coffee. The foodie ritual.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Mission District Mural Walk</span><span class="item-time">2-3 hrs</span></div><div class="item-note">Balmy Alley and Clarion Alley street art, then a Mission burrito crawl.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Lands End Trail</span><span class="item-time">2-3 hrs</span></div><div class="item-note">Stunning coastal hike with Golden Gate views. Sutro Baths ruins at the end.</div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--sfo-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="tip">Late July in SF can still be foggy — dress in layers. 12°C to 25°C in a day.</div>
+          <div class="tip">Rent a car only for day trips. Use Uber/Muni in the city.</div>
+          <div class="tip">The French Laundry books exactly 60 days out at 10:00 AM PT. Set a timer.</div>
+          <div class="tip">With 7 days, prioritize: wine country, Golden Gate bike ride, and top dining.</div>
+          <div class="tip">Bike the Golden Gate to Sausalito, ferry back. Classic SF day.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== NYC ========== -->
+    <div class="leg" style="background:rgba(255,255,255,0.03)" data-bg="var(--nyc)" data-accent="var(--nyc-accent)" onclick="toggleLeg(this)">
+      <div class="leg-header">
+        <div class="leg-icon">🗽</div>
+        <div class="leg-info">
+          <span class="leg-city">New York City</span><span class="leg-subtitle">The food capital</span>
+          <div class="leg-meta">
+            <span class="leg-dates">Aug 1 – Aug 8</span>
+            <span class="leg-count" style="color:var(--nyc-accent)">7 nights · 3 guests</span>
+          </div>
+          <div class="people-badges">
+            <span class="badge" style="background:rgba(255,107,53,0.25);color:var(--nyc-accent);border-color:rgba(255,107,53,0.35)">Rama</span>
+            <span class="badge" style="background:rgba(255,107,53,0.25);color:var(--nyc-accent);border-color:rgba(255,107,53,0.35)">Prabhu</span>
+            <span class="badge" style="background:rgba(255,107,53,0.2);color:rgba(255,255,255,0.6);border-color:rgba(255,107,53,0.25)">Ambi (until Aug 10)</span>
+          </div>
+        </div>
+        <div class="leg-chevron" style="color:var(--nyc-accent)"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></div>
+      </div>
+      <div class="leg-content">
+        <div class="info-cards">
+          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ SFO → JFK</div><div class="card-detail">Direct flights — ~5.5 hrs</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">3 guests: luxury apartment in SoHo or West Village. Hotels: The Beekman, Aman New York, or 1 Hotel Brooklyn Bridge.</div></div>
+        </div>
+        <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 8 picks<span class="chevron" style="color:var(--nyc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Le Bernardin</span><span class="item-tag">3 Michelin ★★★</span></div><div class="item-note">Eric Ripert's temple of seafood. Arguably NYC's most consistently brilliant fine dining.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Atomix</span><span class="item-tag">2 Michelin ★★</span></div><div class="item-note">Korean tasting menu at a counter. One of the most exciting restaurants in America.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Don Angie</span><span class="item-tag">Italian-American</span></div><div class="item-note">The viral chrysanthemum lasagna in the West Village. Book early.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Peter Luger Steak House</span><span class="item-tag">Legendary steakhouse</span></div><div class="item-note">Since 1887 in Williamsburg. Cash only. The porterhouse for two is the move.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Thai Diner</span><span class="item-tag">Thai-American</span></div><div class="item-note">Playful mashup in Nolita. The Khao Soi French Dip is genius.</div></div><span class="item-price">$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Russ &amp; Daughters Cafe</span><span class="item-tag">Jewish deli</span></div><div class="item-note">100+ year LES institution. Smoked fish platters and egg creams are essential NYC.</div></div><span class="item-price">$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Di Fara Pizza</span><span class="item-tag">Legendary pizza</span></div><div class="item-note">Worth the trek to Midwood, Brooklyn. Dom DeMarco's masterpieces.</div></div><span class="item-price">$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Los Tacos No. 1</span><span class="item-tag">Tacos</span></div><div class="item-note">Best quick tacos in Manhattan. Adobada and nopal are perfection.</div></div><span class="item-price">$</span></div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">🗺️ Sights — 8 highlights<span class="chevron" style="color:var(--nyc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="item-header"><span class="item-name">The Metropolitan Museum of Art</span><span class="item-time">Full day</span></div><div class="item-note">Temple of Dendur, European paintings wing, rooftop bar with Central Park views.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Central Park</span><span class="item-time">Half day</span></div><div class="item-note">Rent bikes — Bethesda Fountain, Bow Bridge, Strawberry Fields. Pack a Zabar's picnic.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Brooklyn Bridge Walk</span><span class="item-time">2 hrs</span></div><div class="item-note">Walk at golden hour, Manhattan to Brooklyn. Ice cream on the other side.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Broadway Show</span><span class="item-time">Evening</span></div><div class="item-note">Catch at least 1. TodayTix for deals, or splurge on front row.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">High Line &amp; Chelsea Market</span><span class="item-time">Half day</span></div><div class="item-note">Elevated park walk from Meatpacking to Hudson Yards with food browsing.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Statue of Liberty &amp; Ellis Island</span><span class="item-time">Full day</span></div><div class="item-note">Book pedestal/crown tickets well ahead. Ellis Island museum is deeply moving.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">MoMA</span><span class="item-time">Half day</span></div><div class="item-note">Starry Night, modern art depth, excellent design store.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Chinatown Dim Sum</span><span class="item-time">Morning</span></div><div class="item-note">Nom Wah Tea Parlor — NYC's oldest dim sum parlor on Doyers Street.</div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--nyc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="tip">Top restaurants book 30 days out at midnight. Set calendar reminders NOW.</div>
+          <div class="tip">Tap your credit card on the subway — OMNY system, no metro card needed.</div>
+          <div class="tip">Explore beyond Manhattan: Williamsburg, DUMBO, Harlem have incredible food.</div>
+          <div class="tip">Free summer events: Shakespeare in the Park, SummerStage, outdoor movies.</div>
+          <div class="tip">Ambi's last leg — make it count with the best dining you can book.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== DC EXTENDED ========== -->
+    <div class="leg" style="background:rgba(255,255,255,0.03)" data-bg="var(--dc)" data-accent="var(--dc-accent)" onclick="toggleLeg(this)">
+      <div class="leg-header">
+        <div class="leg-icon">🏛️</div>
+        <div class="leg-info">
+          <span class="leg-city">Washington, D.C.</span><span class="leg-subtitle">Extended stay</span>
+          <div class="leg-meta">
+            <span class="leg-dates">Aug 8 – Sep 7</span>
+            <span class="leg-count" style="color:var(--dc-accent)">30 nights · 2 guests</span>
+          </div>
+          <div class="people-badges">
+            <span class="badge" style="background:rgba(201,168,76,0.25);color:var(--dc-accent);border-color:rgba(201,168,76,0.35)">Rama</span>
+            <span class="badge" style="background:rgba(201,168,76,0.25);color:var(--dc-accent);border-color:rgba(201,168,76,0.35)">Prabhu</span>
+          </div>
+        </div>
+        <div class="leg-chevron" style="color:var(--dc-accent)"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></div>
+      </div>
+      <div class="leg-content">
+        <div class="info-cards">
+          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ JFK → IAD or 🚆 Amtrak Acela</div><div class="card-detail">Flight ~1.5 hrs or Acela First Class ~3 hrs (scenic)</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">7705 Marbury Road, Bethesda, MD. Home base for a full month — settle in and explore at a relaxed pace.</div></div>
+        </div>
+        <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 9 picks<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Pineapple and Pearls</span><span class="item-tag">2 Michelin ★★</span></div><div class="item-note">Aaron Silverman's tasting menu on Capitol Hill. One of America's best dinners.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Dabney</span><span class="item-tag">Mid-Atlantic</span></div><div class="item-note">Michelin-starred hearth-driven cooking. Seasonal menus using only Mid-Atlantic ingredients.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Rasika</span><span class="item-tag">Modern Indian — DC</span></div><div class="item-note">One of DC's most acclaimed restaurants. The palak chaat and tawa shrimp are legendary.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Old Ebbitt Grill</span><span class="item-tag">Classic American</span></div><div class="item-note">DC's oldest saloon near the White House. Great oysters and power-lunch energy.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Julii</span><span class="item-tag">Date night — Bethesda</span></div><div class="item-note">Voted Bethesda's best date night restaurant. Great for a relaxed evening close to home.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">The Salt Line</span><span class="item-tag">Seafood — Bethesda</span></div><div class="item-note">New England-inspired seafood in Bethesda. Outstanding raw bar and lobster rolls.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Mon Ami Gabi</span><span class="item-tag">French bistro — Bethesda</span></div><div class="item-note">Recently renovated Bethesda classic. Excellent steak frites and brunch.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Pisco y Nazca</span><span class="item-tag">Peruvian — Bethesda</span></div><div class="item-note">Modern Peruvian ceviche gastrobar. Great cocktails and bold flavors.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Bethesda Crab House</span><span class="item-tag">Maryland crabs</span></div><div class="item-note">Classic Maryland steamed blue crabs with Old Bay. Casual, messy, perfect summer eating.</div></div><span class="item-price">$$</span></div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">🗺️ Sights &amp; Day Trips — 8 highlights<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="item"><div class="item-header"><span class="item-name">African American History Museum</span><span class="item-time">Half day</span></div><div class="item-note">The most powerful Smithsonian. Free timed passes — book 30 days ahead.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Library of Congress</span><span class="item-time">2 hrs</span></div><div class="item-note">The most beautiful building in DC. The Great Hall's murals and mosaics are breathtaking.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Georgetown Waterfront</span><span class="item-time">Evening</span></div><div class="item-note">Stroll the Potomac, browse boutiques, grab Dolcezza gelato.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Smithsonian Deep Dive</span><span class="item-time">Multiple days</span></div><div class="item-note">With 30 days, explore them all: Natural History, American History, Hirshhorn, Renwick Gallery, and more.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Mount Vernon</span><span class="item-time">Full day</span></div><div class="item-note">George Washington's estate on the Potomac — 30 min drive from Bethesda. Beautiful grounds.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Annapolis &amp; Chesapeake Bay</span><span class="item-time">Full day</span></div><div class="item-note">1 hour east. Charming Naval Academy town, fresh seafood, and sailing on the bay.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Shenandoah National Park</span><span class="item-time">Full day</span></div><div class="item-note">2-hour drive west. Skyline Drive has stunning Blue Ridge mountain views. Great hiking.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Baltimore Day Trip</span><span class="item-time">Full day</span></div><div class="item-note">1 hour north. Inner Harbor, Fort McHenry, incredible crab cakes, and the American Visionary Art Museum.</div></div>
+        </div>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <div class="section-body">
+          <div class="tip">With 30 days, settle into a rhythm. DC on weekdays (fewer crowds), day trips on weekends.</div>
+          <div class="tip">August is still hot and humid. September brings beautiful, cooler weather.</div>
+          <div class="tip">Bethesda Farmers Market runs Sundays — great for fresh produce and local finds.</div>
+          <div class="tip">Rent kayaks on the Potomac from Key Bridge Boathouse in Georgetown.</div>
+          <div class="tip">Great Falls Park (20 min from Bethesda) has dramatic rapids and easy trails.</div>
+          <div class="tip">Drive to Virginia wine country (Loudoun County) — 45 min. Less crowded than Napa.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /legs -->
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-value">57</div><div class="stat-label">Total Nights</div></div>
+    <div class="stat"><div class="stat-value">4</div><div class="stat-label">Cities</div></div>
+    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Nat'l Parks</div></div>
+    <div class="stat"><div class="stat-value">36</div><div class="stat-label">Restaurants</div></div>
+  </div>
+
+  <div class="footer">Book park lodging &amp; top restaurants ASAP — summer 2026 fills fast ✦</div>
+
+</div>
+
+<script>
+function toggleLeg(el) {
+  const wasActive = el.classList.contains('active');
+  // Close all
+  document.querySelectorAll('.leg').forEach(leg => {
+    leg.classList.remove('active');
+    leg.style.background = 'rgba(255,255,255,0.03)';
+  });
+  // Open clicked if it wasn't active
+  if (!wasActive) {
+    el.classList.add('active');
+    const bg = el.getAttribute('data-bg') || el.style.background;
+    if (el.getAttribute('data-bg')) el.style.background = getComputedStyle(document.documentElement).getPropertyValue(el.getAttribute('data-bg').replace('var(','').replace(')',''));
+    // Handle first card which has inline bg
+    if (el.querySelector('.leg-city').textContent.includes('Washington') && el.querySelector('.leg-subtitle')?.textContent === 'Quick intro') {
+      el.style.background = getComputedStyle(document.documentElement).getPropertyValue('--dc');
+    }
+  }
+}
+
+// Initialize first card
+document.addEventListener('DOMContentLoaded', () => {
+  const first = document.querySelector('.leg.active');
+  if (first) first.style.background = getComputedStyle(document.documentElement).getPropertyValue('--dc');
+});
+</script>
+
+</body>
+</html>
