@@ -246,14 +246,15 @@
 </style>
 </head>
 <body>
+<body>
 <div class="container">
 
   <!-- HEADER (shared) -->
   <div class="header">
     <div class="tag">Summer 2026</div>
     <h1>American Grand Tour</h1>
-    <div class="route">Copenhagen → D.C. → Glacier National Park → San Francisco → New York → D.C. → Home</div>
-    <div class="meta">July 12 – September 7 · 58 days · 4 cities · 2 national parks</div>
+    <div class="route">Copenhagen → D.C. → Rocky Mountain NP → San Francisco → New York → D.C. → Home</div>
+    <div class="meta">July 12 – September 7 · 58 days · 4 cities · 1 national park</div>
   </div>
 
   <!-- TAB NAVIGATION -->
@@ -283,10 +284,10 @@
   <div class="info-box" style="margin-bottom:28px">
     <div class="label">Route Overview</div>
     <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Copenhagen (CPH) → Washington (IAD)</div><div class="note">SAS/United direct ~9.5h</div></div><div class="date">Jul 12</div></div>
-    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Washington (IAD) → Kalispell (FCA)</div><div class="note">Via Denver/Minneapolis/Seattle ~5-6h</div></div><div class="date">Jul 15</div></div>
-    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Kalispell (FCA) → San Francisco (SFO)</div><div class="note">Via DEN/SEA/SLC ~4-5h</div></div><div class="date">Jul 25</div></div>
-    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">San Francisco (SFO) → New York (JFK)</div><div class="note">Direct ~5.5h</div></div><div class="date">Aug 1</div></div>
-    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">New York (JFK) → Washington (IAD)</div><div class="note">Flight ~1.5h or Amtrak ~3h</div></div><div class="date">Aug 8</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Washington (IAD) → Denver (DEN)</div><div class="note">Direct ~4h</div></div><div class="date">Jul 15</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Denver (DEN) → San Francisco (SFO)</div><div class="note">Direct ~2.5h</div></div><div class="date">Jul 25</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">San Francisco (SFO) → New York (JFK)</div><div class="note">Direct ~5.5h</div></div><div class="date">Aug 15</div></div>
+    <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">New York (JFK) → Washington (IAD)</div><div class="note">Flight ~1.5h or Amtrak ~3h</div></div><div class="date">Aug 29</div></div>
     <div class="flight-row"><span class="icon">✈️</span><div class="info"><div class="route-text">Washington (IAD) → Copenhagen (CPH)</div><div class="note">SAS direct or connect ~9.5h</div></div><div class="date">Sep 7</div></div>
   </div>
 
@@ -332,20 +333,20 @@
         </div>
         <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
-          <div class="tip" style="--accent:var(--dc-accent)">July DC is 30-35°C and humid. Start early, take midday AC breaks.</div>
+          <div class="tip">July DC is 30-35°C and humid. Start early, take midday AC breaks.</div>
           <div class="tip">All Smithsonians are FREE.</div>
           <div class="tip">From Bethesda: Red Line Metro (~20 min to downtown). Buy a SmarTrip card.</div>
-          <div class="tip">This is a quick intro — you'll have 30 days here at the end for deep exploration.</div>
+          <div class="tip">This is a quick intro — you'll have 9 more days here at the end for deeper exploration.</div>
         </div>
       </div>
     </div>
 
-    <!-- ========== GLACIER ========== -->
+    <!-- ========== ROCKY MOUNTAIN ========== -->
     <div class="leg" style="background:rgba(255,255,255,0.03)" data-bg="var(--park)" data-accent="var(--park-accent)" onclick="toggleLeg(this)">
       <div class="leg-header">
         <div class="leg-icon">🏔️</div>
         <div class="leg-info">
-          <span class="leg-city">Glacier National Park</span><span class="leg-subtitle">The crown of the continent</span>
+          <span class="leg-city">Rocky Mountain NP</span><span class="leg-subtitle">Alpine peaks &amp; elk meadows</span>
           <div class="leg-meta">
             <span class="leg-dates">Jul 15 – Jul 25</span>
             <span class="leg-count" style="color:var(--park-accent)">10 nights · 6 guests</span>
@@ -363,39 +364,38 @@
       </div>
       <div class="leg-content">
         <div class="info-cards">
-          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ IAD → Kalispell (FCA)</div><div class="card-detail">Via Denver, Minneapolis, or Seattle — ~5-6 hrs. Rent 1 large SUV + 1 sedan at FCA. 30 min to Whitefish, 45 min to park entrance.</div></div>
-          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">6 guests: Base in Whitefish — luxury cabin or home rental (abundant on Vrbo). Splurge nights: Lodge at Whitefish Lake, Many Glacier Hotel (inside park), or Lake McDonald Lodge. Book early — summer fills fast.</div></div>
+          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ IAD → Denver (DEN)</div><div class="card-detail">Direct flight — ~4 hrs. Rent 1 large SUV + 1 sedan at DEN. 90-min drive to Estes Park.</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">6 guests: Luxury home rental in Estes Park (Vrbo — many 4-bed homes with hot tubs &amp; mountain views). Splurge nights: The Stanley Hotel or Della Terra Mountain Chateau. Book early — summer fills fast.</div></div>
         </div>
         <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 6 picks<span class="chevron" style="color:var(--park-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
-          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Herb &amp; Omni</span><span class="item-tag">James Beard-nominated</span></div><div class="item-note">Chef Earl Reynolds' refined Montana cooking in a restored historic building. Best fine dining in Whitefish.</div></div><span class="item-price">$$$$</span></div></div>
-          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Tupelo Grille</span><span class="item-tag">Southern-Montana fusion</span></div><div class="item-note">New Orleans-style gumbo, jambalaya, and Montana steaks since 1995. Award-winning wine list. Reserve ahead.</div></div><span class="item-price">$$$</span></div></div>
-          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Whitefish Lake Restaurant</span><span class="item-tag">Lakeside fine dining</span></div><div class="item-note">Steaks, seafood, and regional specialties with stunning views over Whitefish Lake. The only restaurant on the water.</div></div><span class="item-price">$$$$</span></div></div>
-          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Loula's Cafe</span><span class="item-tag">Breakfast</span></div><div class="item-note">Beloved from-scratch breakfast in a historic Masonic temple. The eggs benedict and huckleberry pie are legendary.</div></div><span class="item-price">$$</span></div></div>
-          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Abruzzo Italian Kitchen</span><span class="item-tag">Italian</span></div><div class="item-note">Handmade pasta and wood-fired dishes in a warm downtown setting. Great for a group dinner.</div></div><span class="item-price">$$$</span></div></div>
-          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Buffalo Cafe</span><span class="item-tag">Classic diner</span></div><div class="item-note">Local institution for 40+ years. Hearty Montana breakfasts — chicken-fried steak and buttermilk pancakes.</div></div><span class="item-price">$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Twin Owls Steakhouse</span><span class="item-tag">Fine dining — Taharaa Lodge</span></div><div class="item-note">Refined steaks and seafood with scenic mountain views. The best upscale dinner in the Estes Park area.</div></div><span class="item-price">$$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Ember Restaurant</span><span class="item-tag">Modern American — Estes Park Resort</span></div><div class="item-note">Upscale-casual lakeside dining on Lake Estes. Locally sourced seasonal menu with stunning views.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">The Stanley Hotel Dining</span><span class="item-tag">Historic hotel — multiple venues</span></div><div class="item-note">Fine dining, whiskey bar, and brunch in the iconic 1909 hotel that inspired The Shining. Worth a visit even if not staying.</div></div><span class="item-price">$$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Smokin' Dave's BBQ</span><span class="item-tag">BBQ — Estes Park</span></div><div class="item-note">Award-winning barbecue — brisket, ribs, and pulled pork. Casual and great for a hungry group after hiking.</div></div><span class="item-price">$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Nepal's Cafe</span><span class="item-tag">Himalayan — Estes Park</span></div><div class="item-note">Authentic Nepali and Indian cuisine in a cozy mountain town setting. A unexpected gem.</div></div><span class="item-price">$$</span></div></div>
+          <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Bird &amp; Jim</span><span class="item-tag">Farm-to-table — Estes Park</span></div><div class="item-note">Seasonal American with Colorado-sourced ingredients. Cozy atmosphere, craft cocktails, excellent brunch.</div></div><span class="item-price">$$$</span></div></div>
         </div>
         <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">🗺️ Sights — 8 highlights<span class="chevron" style="color:var(--park-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
-          <div class="item"><div class="item-header"><span class="item-name">Going-to-the-Sun Road</span><span class="item-time">Full day</span></div><div class="item-note">One of America's greatest drives — 50 miles through the heart of the park, crossing the Continental Divide at Logan Pass (6,646 ft). No vehicle reservations needed for 2026. Start before 8 AM.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Hidden Lake Overlook</span><span class="item-time">2-3 hrs</span></div><div class="item-note">2.7-mile moderate hike from Logan Pass to a jaw-dropping alpine lake view. Mountain goats often spotted on the trail.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Avalanche Lake Trail</span><span class="item-time">3-4 hrs</span></div><div class="item-note">4.5-mile roundtrip moderate hike to a stunning glacial cirque lake surrounded by waterfalls and cliffs. A Glacier classic.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Many Glacier</span><span class="item-time">Full day</span></div><div class="item-note">Many consider this the most beautiful area of the park. Turquoise lakes, towering peaks, and excellent wildlife. Hike to Redrock Falls or Grinnell Glacier.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Lake McDonald</span><span class="item-time">Half day</span></div><div class="item-note">The park's largest lake — famous for its colorful pebble shore. Rent kayaks or paddleboards at Apgar Village. Magical at sunrise.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Highline Trail</span><span class="item-time">Full day</span></div><div class="item-note">Spectacular cliff-edge trail from Logan Pass — relatively flat but exposed, with sweeping views the entire way. Best moderate trail in the park.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Historic Red Bus Tour</span><span class="item-time">Half day</span></div><div class="item-note">Ride the iconic 1930s open-top red buses along Going-to-the-Sun Road with a driver-guide. A classic Glacier experience — book ahead.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Two Medicine</span><span class="item-time">Half day</span></div><div class="item-note">Quieter east-side area with scenic boat tours and less-crowded trails. A peaceful escape from the main corridor.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Trail Ridge Road</span><span class="item-time">Full day</span></div><div class="item-note">The highest continuous paved road in the US (12,183 ft). 48 miles of alpine tundra, sweeping mountain views, and wildlife. Bring layers — it's cold at the top even in July.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Bear Lake &amp; Emerald Lake</span><span class="item-time">Half day</span></div><div class="item-note">Bear Lake is the park's most popular trailhead. Walk to Nymph Lake (0.5 mi), Dream Lake (1.1 mi), and Emerald Lake (1.8 mi) — each more stunning than the last.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Alberta Falls</span><span class="item-time">2 hrs</span></div><div class="item-note">Easy 1.7-mile roundtrip hike to a beautiful 30-foot waterfall. Perfect for all fitness levels. Start from Glacier Gorge trailhead.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Elk Meadows &amp; Wildlife</span><span class="item-time">Morning</span></div><div class="item-note">Massive elk herds graze in Moraine Park and Horseshoe Park at dawn and dusk. July is prime season. Keep 75 feet distance.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Alpine Visitor Center</span><span class="item-time">1-2 hrs</span></div><div class="item-note">At 11,796 ft on Trail Ridge Road — the highest visitor center in the NPS. Short alpine tundra walks with wildflowers in July. Breathtaking panoramas.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Sprague Lake</span><span class="item-time">1-2 hrs</span></div><div class="item-note">Easy, flat 0.9-mile loop around a pristine mountain lake with perfect reflections of the surrounding peaks. Wheelchair accessible. Great for photography.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Estes Park Town</span><span class="item-time">Evening</span></div><div class="item-note">Charming mountain town with riverwalk, boutique shops, taffy shops, and outdoor dining. The Stanley Hotel is worth a visit for its Shining history alone.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Horseback Riding</span><span class="item-time">Half day</span></div><div class="item-note">Guided rides through the park's meadows and forests with outfitters like Sombrero Stables. Great group activity for all levels.</div></div>
         </div>
         <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--park-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
-          <div class="tip">Start every day before 8 AM. Logan Pass parking is limited to 3 hours starting July 1 — arrive early.</div>
-          <div class="tip">No vehicle reservation needed for Going-to-the-Sun Road in 2026 — a welcome change from previous years.</div>
-          <div class="tip">Buy bear spray in Whitefish before entering the park. Carry it on every hike.</div>
-          <div class="tip">Cell service is very limited in the park. Download offline maps beforehand.</div>
-          <div class="tip">Whitefish Farmers Market runs Tuesday evenings — great for local finds and a fun group outing.</div>
-          <div class="tip">Maneesh departs by Jul 22-25 to be back at work by Aug 3. Book his return flight from FCA early.</div>
-          <div class="tip">Evening drives on Going-to-the-Sun Road (after 5 PM) are less crowded and excellent for wildlife spotting.</div>
-          <div class="tip">Don't miss Polebridge Mercantile — a remote off-grid bakery near Bowman Lake with legendary huckleberry bear claws.</div>
+          <div class="tip">Timed entry reservations may be required for Bear Lake corridor — check the NPS website and book 30 days ahead.</div>
+          <div class="tip">Start early (before 8 AM) to beat crowds and secure parking at popular trailheads.</div>
+          <div class="tip">Altitude matters! Estes Park is at 7,500 ft, Trail Ridge peaks at 12,183 ft. Hydrate constantly, take it easy day 1.</div>
+          <div class="tip">Afternoon thunderstorms are common in July. Plan big hikes for morning, be off exposed ridges by 1 PM.</div>
+          <div class="tip">Denver is only 90 min away — cheap flights, easy rental cars, and you could even do a Denver dinner night.</div>
+          <div class="tip">Maneesh departs by Jul 22-25 to be back at work by Aug 3. Book his return flight from DEN early.</div>
+          <div class="tip">Buy the America the Beautiful Pass ($80) — covers park entry for the whole group's vehicle.</div>
         </div>
       </div>
     </div>
@@ -407,21 +407,21 @@
         <div class="leg-info">
           <span class="leg-city">San Francisco &amp; Bay Area</span><span class="leg-subtitle">Wine, coast &amp; cuisine</span>
           <div class="leg-meta">
-            <span class="leg-dates">Jul 25 – Aug 1</span>
-            <span class="leg-count" style="color:var(--sfo-accent)">7 nights · 3 guests</span>
+            <span class="leg-dates">Jul 25 – Aug 15</span>
+            <span class="leg-count" style="color:var(--sfo-accent)">21 nights · 3 guests</span>
           </div>
           <div class="people-badges">
             <span class="badge" style="background:rgba(255,215,0,0.2);color:var(--sfo-accent);border-color:rgba(255,215,0,0.3)">Rama</span>
             <span class="badge" style="background:rgba(255,215,0,0.2);color:var(--sfo-accent);border-color:rgba(255,215,0,0.3)">Prabhu</span>
-            <span class="badge" style="background:rgba(255,215,0,0.2);color:var(--sfo-accent);border-color:rgba(255,215,0,0.3)">Ambi</span>
+            <span class="badge" style="background:rgba(255,215,0,0.15);color:rgba(255,255,255,0.6);border-color:rgba(255,215,0,0.2)">Ambi (until Aug 10)</span>
           </div>
         </div>
         <div class="leg-chevron" style="color:var(--sfo-accent)"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></div>
       </div>
       <div class="leg-content">
         <div class="info-cards">
-          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ FCA → SFO</div><div class="card-detail">Via Denver, Seattle, or SLC — ~4-5 hrs total</div></div>
-          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">3 guests: luxury flat in Pacific Heights or Noe Valley. Hotels: The San Francisco Proper, Cavallo Point, or Hotel Drisco.</div></div>
+          <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ DEN → SFO</div><div class="card-detail">Direct flight — ~2.5 hrs</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">3 guests: rent a luxury flat in Pacific Heights or Noe Valley. Hotels: The San Francisco Proper, Cavallo Point (Marin Headlands), or Hotel Drisco. For wine country weekends: Meadowood Napa Valley.</div></div>
         </div>
         <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 8 picks<span class="chevron" style="color:var(--sfo-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
@@ -434,23 +434,27 @@
           <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Tartine Bakery</span><span class="item-tag">Bakery</span></div><div class="item-note">Iconic morning bun and country bread. The Manufactory has a full restaurant.</div></div><span class="item-price">$$</span></div></div>
           <div class="item"><div class="dining-row"><div class="item-info"><div class="item-header"><span class="item-name">Hog Island Oyster Co.</span><span class="item-tag">Ferry Building</span></div><div class="item-note">Fresh Tomales Bay oysters with California white wine. Perfect.</div></div><span class="item-price">$$$</span></div></div>
         </div>
-        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">🗺️ Sights — 7 highlights<span class="chevron" style="color:var(--sfo-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
+        <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">🗺️ Sights — 8 highlights<span class="chevron" style="color:var(--sfo-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
           <div class="item"><div class="item-header"><span class="item-name">Golden Gate Bridge &amp; Battery Spencer</span><span class="item-time">Half day</span></div><div class="item-note">Walk or bike across, continue to Marin side for the classic fog-over-bridge photo.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Napa &amp; Sonoma Wine Country</span><span class="item-time">1-2 days</span></div><div class="item-note">Private driver, 3-4 wineries/day. Book The French Laundry exactly 60 days out at 10 AM PT.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Napa &amp; Sonoma Wine Country</span><span class="item-time">2-3 days</span></div><div class="item-note">With 3 weeks, do this properly. Private driver, 3-4 wineries/day. Book The French Laundry exactly 60 days out at 10 AM PT.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Big Sur Road Trip</span><span class="item-time">2-3 days</span></div><div class="item-note">Highway 1 south — Bixby Bridge, McWay Falls, Pfeiffer Beach. Stay at Post Ranch Inn. You have time for this now.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Muir Woods</span><span class="item-time">Half day</span></div><div class="item-note">Ancient coastal redwoods 30 min from the city. Timed parking reservation required.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Alcatraz Island</span><span class="item-time">Half day</span></div><div class="item-note">Night tour is especially atmospheric. Book weeks ahead.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Ferry Building Saturday Market</span><span class="item-time">Morning</span></div><div class="item-note">Artisan cheeses, seasonal fruit, oysters, Blue Bottle Coffee. The foodie ritual.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Ferry Building Saturday Market</span><span class="item-time">Morning</span></div><div class="item-note">Artisan cheeses, seasonal fruit, oysters, Blue Bottle Coffee. The foodie ritual. You'll hit 3 Saturdays!</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Mission District Mural Walk</span><span class="item-time">2-3 hrs</span></div><div class="item-note">Balmy Alley and Clarion Alley street art, then a Mission burrito crawl.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Lands End Trail</span><span class="item-time">2-3 hrs</span></div><div class="item-note">Stunning coastal hike with Golden Gate views. Sutro Baths ruins at the end.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Monterey &amp; Carmel</span><span class="item-time">1-2 days</span></div><div class="item-note">With 3 weeks, add the Monterey Bay Aquarium, 17-Mile Drive, and charming Carmel-by-the-Sea. 2 hrs south.</div></div>
         </div>
         <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--sfo-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
-          <div class="tip">Late July in SF can still be foggy — dress in layers. 12°C to 25°C in a day.</div>
+          <div class="tip">Late Jul–Aug is SF's warmest, sunniest season — the summer fog lifts. Still bring layers.</div>
           <div class="tip">Rent a car only for day trips. Use Uber/Muni in the city.</div>
           <div class="tip">The French Laundry books exactly 60 days out at 10:00 AM PT. Set a timer.</div>
-          <div class="tip">With 7 days, prioritize: wine country, Golden Gate bike ride, and top dining.</div>
+          <div class="tip">With 3 weeks, you can do wine country, Big Sur, AND Monterey/Carmel without rushing.</div>
+          <div class="tip">Saturday Ferry Building market (8 AM–2 PM) is unmissable — you'll get 3 of them!</div>
+          <div class="tip">Ambi departs around Aug 10 — plan a special farewell dinner at Benu or Lazy Bear.</div>
           <div class="tip">Bike the Golden Gate to Sausalito, ferry back. Classic SF day.</div>
+          <div class="tip">Consider a day trip to Lake Tahoe (4-hr drive) or Yosemite (4-hr drive) with this much time.</div>
         </div>
       </div>
     </div>
@@ -462,13 +466,12 @@
         <div class="leg-info">
           <span class="leg-city">New York City</span><span class="leg-subtitle">The food capital</span>
           <div class="leg-meta">
-            <span class="leg-dates">Aug 1 – Aug 8</span>
-            <span class="leg-count" style="color:var(--nyc-accent)">7 nights · 3 guests</span>
+            <span class="leg-dates">Aug 15 – Aug 29</span>
+            <span class="leg-count" style="color:var(--nyc-accent)">14 nights · 2 guests</span>
           </div>
           <div class="people-badges">
             <span class="badge" style="background:rgba(255,107,53,0.25);color:var(--nyc-accent);border-color:rgba(255,107,53,0.35)">Rama</span>
             <span class="badge" style="background:rgba(255,107,53,0.25);color:var(--nyc-accent);border-color:rgba(255,107,53,0.35)">Prabhu</span>
-            <span class="badge" style="background:rgba(255,107,53,0.2);color:rgba(255,255,255,0.6);border-color:rgba(255,107,53,0.25)">Ambi (until Aug 10)</span>
           </div>
         </div>
         <div class="leg-chevron" style="color:var(--nyc-accent)"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></div>
@@ -476,7 +479,7 @@
       <div class="leg-content">
         <div class="info-cards">
           <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ SFO → JFK</div><div class="card-detail">Direct flights — ~5.5 hrs</div></div>
-          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">3 guests: luxury apartment in SoHo or West Village. Hotels: The Beekman, Aman New York, or 1 Hotel Brooklyn Bridge.</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">2 guests: luxury apartment in SoHo or West Village. Hotels: The Beekman, Aman New York (ultimate splurge), or 1 Hotel Brooklyn Bridge.</div></div>
         </div>
         <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 8 picks<span class="chevron" style="color:var(--nyc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
@@ -494,19 +497,20 @@
           <div class="item"><div class="item-header"><span class="item-name">The Metropolitan Museum of Art</span><span class="item-time">Full day</span></div><div class="item-note">Temple of Dendur, European paintings wing, rooftop bar with Central Park views.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Central Park</span><span class="item-time">Half day</span></div><div class="item-note">Rent bikes — Bethesda Fountain, Bow Bridge, Strawberry Fields. Pack a Zabar's picnic.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Brooklyn Bridge Walk</span><span class="item-time">2 hrs</span></div><div class="item-note">Walk at golden hour, Manhattan to Brooklyn. Ice cream on the other side.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Broadway Show</span><span class="item-time">Evening</span></div><div class="item-note">Catch at least 1. TodayTix for deals, or splurge on front row.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Broadway Shows</span><span class="item-time">2-3 evenings</span></div><div class="item-note">With 2 weeks, catch at least 2-3 shows. TodayTix for deals, or splurge on front row.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">High Line &amp; Chelsea Market</span><span class="item-time">Half day</span></div><div class="item-note">Elevated park walk from Meatpacking to Hudson Yards with food browsing.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Statue of Liberty &amp; Ellis Island</span><span class="item-time">Full day</span></div><div class="item-note">Book pedestal/crown tickets well ahead. Ellis Island museum is deeply moving.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">MoMA</span><span class="item-time">Half day</span></div><div class="item-note">Starry Night, modern art depth, excellent design store.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Chinatown Dim Sum</span><span class="item-time">Morning</span></div><div class="item-note">Nom Wah Tea Parlor — NYC's oldest dim sum parlor on Doyers Street.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">MoMA &amp; Guggenheim</span><span class="item-time">Full day</span></div><div class="item-note">With 2 weeks, do both. Starry Night at MoMA, Frank Lloyd Wright spiral at the Guggenheim.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Chinatown &amp; Little Italy</span><span class="item-time">Half day</span></div><div class="item-note">Dim sum at Nom Wah Tea Parlor, then wander through the neighborhoods. Explore Flushing for the real deal.</div></div>
         </div>
         <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--nyc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
           <div class="tip">Top restaurants book 30 days out at midnight. Set calendar reminders NOW.</div>
           <div class="tip">Tap your credit card on the subway — OMNY system, no metro card needed.</div>
-          <div class="tip">Explore beyond Manhattan: Williamsburg, DUMBO, Harlem have incredible food.</div>
+          <div class="tip">Explore beyond Manhattan: Williamsburg, DUMBO, Harlem, and Flushing have incredible food.</div>
           <div class="tip">Free summer events: Shakespeare in the Park, SummerStage, outdoor movies.</div>
-          <div class="tip">Ambi's last leg — make it count with the best dining you can book.</div>
+          <div class="tip">With 2 weeks, do day trips: Hamptons, Fire Island, Hudson Valley, or Storm King Art Center.</div>
+          <div class="tip">August NYC is hot and humid (30°C+). Embrace it — everyone's outside, the city buzzes.</div>
         </div>
       </div>
     </div>
@@ -518,8 +522,8 @@
         <div class="leg-info">
           <span class="leg-city">Washington, D.C.</span><span class="leg-subtitle">Extended stay</span>
           <div class="leg-meta">
-            <span class="leg-dates">Aug 8 – Sep 7</span>
-            <span class="leg-count" style="color:var(--dc-accent)">30 nights · 2 guests</span>
+            <span class="leg-dates">Aug 29 – Sep 7</span>
+            <span class="leg-count" style="color:var(--dc-accent)">9 nights · 2 guests</span>
           </div>
           <div class="people-badges">
             <span class="badge" style="background:rgba(201,168,76,0.25);color:var(--dc-accent);border-color:rgba(201,168,76,0.35)">Rama</span>
@@ -531,7 +535,7 @@
       <div class="leg-content">
         <div class="info-cards">
           <div class="info-card"><div class="card-label">Getting There</div><div class="card-title">✈️ JFK → IAD or 🚆 Amtrak Acela</div><div class="card-detail">Flight ~1.5 hrs or Acela First Class ~3 hrs (scenic)</div></div>
-          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">7705 Marbury Road, Bethesda, MD. Home base for a full month — settle in and explore at a relaxed pace.</div></div>
+          <div class="info-card"><div class="card-label">Where to Stay</div><div class="card-body">7705 Marbury Road, Bethesda, MD. Back to your home base for the final stretch — relaxed pace, day trips, deeper DC exploration.</div></div>
         </div>
         <button class="section-toggle open" onclick="event.stopPropagation();this.classList.toggle('open')">🍽️ Dining — 9 picks<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
@@ -550,20 +554,20 @@
           <div class="item"><div class="item-header"><span class="item-name">African American History Museum</span><span class="item-time">Half day</span></div><div class="item-note">The most powerful Smithsonian. Free timed passes — book 30 days ahead.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Library of Congress</span><span class="item-time">2 hrs</span></div><div class="item-note">The most beautiful building in DC. The Great Hall's murals and mosaics are breathtaking.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Georgetown Waterfront</span><span class="item-time">Evening</span></div><div class="item-note">Stroll the Potomac, browse boutiques, grab Dolcezza gelato.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Smithsonian Deep Dive</span><span class="item-time">Multiple days</span></div><div class="item-note">With 30 days, explore them all: Natural History, American History, Hirshhorn, Renwick Gallery, and more.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Smithsonian Deep Dive</span><span class="item-time">Multiple days</span></div><div class="item-note">Natural History, American History, Hirshhorn, Renwick Gallery — all free, all world-class.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Mount Vernon</span><span class="item-time">Full day</span></div><div class="item-note">George Washington's estate on the Potomac — 30 min drive from Bethesda. Beautiful grounds.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Annapolis &amp; Chesapeake Bay</span><span class="item-time">Full day</span></div><div class="item-note">1 hour east. Charming Naval Academy town, fresh seafood, and sailing on the bay.</div></div>
           <div class="item"><div class="item-header"><span class="item-name">Shenandoah National Park</span><span class="item-time">Full day</span></div><div class="item-note">2-hour drive west. Skyline Drive has stunning Blue Ridge mountain views. Great hiking.</div></div>
-          <div class="item"><div class="item-header"><span class="item-name">Baltimore Day Trip</span><span class="item-time">Full day</span></div><div class="item-note">1 hour north. Inner Harbor, Fort McHenry, incredible crab cakes, and the American Visionary Art Museum.</div></div>
+          <div class="item"><div class="item-header"><span class="item-name">Baltimore Day Trip</span><span class="item-time">Full day</span></div><div class="item-note">1 hour north. Inner Harbor, Fort McHenry, incredible crab cakes, American Visionary Art Museum.</div></div>
         </div>
         <button class="section-toggle" onclick="event.stopPropagation();this.classList.toggle('open')">💡 Insider Tips<span class="chevron" style="color:var(--dc-accent)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 8l5 5 5-5"/></svg></span></button>
         <div class="section-body">
-          <div class="tip">With 30 days, settle into a rhythm. DC on weekdays (fewer crowds), day trips on weekends.</div>
-          <div class="tip">August is still hot and humid. September brings beautiful, cooler weather.</div>
+          <div class="tip">September in DC brings beautiful, cooler weather — the best time of year in the capital.</div>
           <div class="tip">Bethesda Farmers Market runs Sundays — great for fresh produce and local finds.</div>
           <div class="tip">Rent kayaks on the Potomac from Key Bridge Boathouse in Georgetown.</div>
           <div class="tip">Great Falls Park (20 min from Bethesda) has dramatic rapids and easy trails.</div>
           <div class="tip">Drive to Virginia wine country (Loudoun County) — 45 min. Less crowded than Napa.</div>
+          <div class="tip">Soak up the last days — monuments at night, long dinners, the slow DC farewell.</div>
         </div>
       </div>
     </div>
@@ -574,8 +578,8 @@
   <div class="stats">
     <div class="stat"><div class="stat-value">57</div><div class="stat-label">Total Nights</div></div>
     <div class="stat"><div class="stat-value">4</div><div class="stat-label">Cities</div></div>
-    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Nat'l Parks</div></div>
-    <div class="stat"><div class="stat-value">36</div><div class="stat-label">Restaurants</div></div>
+    <div class="stat"><div class="stat-value">1</div><div class="stat-label">Nat'l Park</div></div>
+    <div class="stat"><div class="stat-value">37</div><div class="stat-label">Restaurants</div></div>
   </div>
 
   <div class="footer">Book park lodging &amp; top restaurants ASAP — summer 2026 fills fast ✦</div>
@@ -585,94 +589,50 @@
   <!-- ==================== MAP PAGE ==================== -->
   <div id="page-map" class="tab-page">
 
-    <!-- Map -->
     <div id="map-container"></div>
 
-    <!-- Legend -->
     <div class="map-legend">
       <div class="label">Transport Modes</div>
-      <div class="legend-item">
-        <div class="legend-line" style="background:#60A5FA"></div>
-        <div class="legend-text"><strong>✈️ International Flight</strong> — transatlantic crossings</div>
-      </div>
-      <div class="legend-item">
-        <div class="legend-line" style="background:#F59E0B"></div>
-        <div class="legend-text"><strong>✈️ Domestic Flight</strong> — between US cities</div>
-      </div>
-      <div class="legend-item">
-        <div class="legend-dash" style="border-color:#34D399"></div>
-        <div class="legend-text"><strong>🚆 Train</strong> — Amtrak Acela (NYC ↔ DC option)</div>
-      </div>
-      <div class="legend-item">
-        <div class="legend-dash" style="border-color:#F87171"></div>
-        <div class="legend-text"><strong>🚗 Rental Car</strong> — national parks driving</div>
-      </div>
+      <div class="legend-item"><div class="legend-line" style="background:#60A5FA"></div><div class="legend-text"><strong>✈️ International Flight</strong> — transatlantic crossings</div></div>
+      <div class="legend-item"><div class="legend-line" style="background:#F59E0B"></div><div class="legend-text"><strong>✈️ Domestic Flight</strong> — between US cities</div></div>
+      <div class="legend-item"><div class="legend-dash" style="border-color:#34D399"></div><div class="legend-text"><strong>🚆 Train</strong> — Amtrak Acela (NYC ↔ DC option)</div></div>
+      <div class="legend-item"><div class="legend-dash" style="border-color:#F87171"></div><div class="legend-text"><strong>🚗 Rental Car</strong> — Denver to Estes Park &amp; park drives</div></div>
     </div>
 
-    <!-- Journey Cards -->
     <div class="map-legend">
       <div class="label">All Journeys</div>
       <div class="journey-cards">
-        <div class="journey-card" onclick="focusJourney(0)">
-          <div class="jc-dot" style="background:#60A5FA"></div>
-          <div class="jc-info"><div class="jc-route">Copenhagen → Washington, D.C.</div><div class="jc-detail">✈️ International flight · SAS/United direct · ~9.5h</div></div>
-          <div class="jc-date">Jul 12</div>
-        </div>
-        <div class="journey-card" onclick="focusJourney(1)">
-          <div class="jc-dot" style="background:#F59E0B"></div>
-          <div class="jc-info"><div class="jc-route">Washington, D.C. → Kalispell (Glacier)</div><div class="jc-detail">✈️ Domestic flight · via Denver/Minneapolis/Seattle · ~5-6h</div></div>
-          <div class="jc-date">Jul 15</div>
-        </div>
-        <div class="journey-card" onclick="focusJourney(2)">
-          <div class="jc-dot" style="background:#F87171"></div>
-          <div class="jc-info"><div class="jc-route">Whitefish ↔ Glacier National Park</div><div class="jc-detail">🚗 Rental car · 1 large SUV + 1 sedan · Going-to-the-Sun Road &amp; park drives</div></div>
-          <div class="jc-date">Jul 15–25</div>
-        </div>
-        <div class="journey-card" onclick="focusJourney(3)">
-          <div class="jc-dot" style="background:#F59E0B"></div>
-          <div class="jc-info"><div class="jc-route">Kalispell → San Francisco</div><div class="jc-detail">✈️ Domestic flight · via DEN/SEA/SLC · ~4-5h</div></div>
-          <div class="jc-date">Jul 25</div>
-        </div>
-        <div class="journey-card" onclick="focusJourney(4)">
-          <div class="jc-dot" style="background:#F59E0B"></div>
-          <div class="jc-info"><div class="jc-route">San Francisco → New York City</div><div class="jc-detail">✈️ Domestic flight · direct · ~5.5h</div></div>
-          <div class="jc-date">Aug 1</div>
-        </div>
-        <div class="journey-card" onclick="focusJourney(5)">
-          <div class="jc-dot" style="background:#34D399"></div>
-          <div class="jc-info"><div class="jc-route">New York City → Washington, D.C.</div><div class="jc-detail">🚆 Amtrak Acela First Class · ~3h (or ✈️ ~1.5h)</div></div>
-          <div class="jc-date">Aug 8</div>
-        </div>
-        <div class="journey-card" onclick="focusJourney(6)">
-          <div class="jc-dot" style="background:#60A5FA"></div>
-          <div class="jc-info"><div class="jc-route">Washington, D.C. → Copenhagen</div><div class="jc-detail">✈️ International flight · SAS direct or connect · ~9.5h</div></div>
-          <div class="jc-date">Sep 7</div>
-        </div>
+        <div class="journey-card" onclick="focusJourney(0)"><div class="jc-dot" style="background:#60A5FA"></div><div class="jc-info"><div class="jc-route">Copenhagen → Washington, D.C.</div><div class="jc-detail">✈️ International flight · SAS/United direct · ~9.5h</div></div><div class="jc-date">Jul 12</div></div>
+        <div class="journey-card" onclick="focusJourney(1)"><div class="jc-dot" style="background:#F59E0B"></div><div class="jc-info"><div class="jc-route">Washington, D.C. → Denver</div><div class="jc-detail">✈️ Domestic flight · direct · ~4h</div></div><div class="jc-date">Jul 15</div></div>
+        <div class="journey-card" onclick="focusJourney(2)"><div class="jc-dot" style="background:#F87171"></div><div class="jc-info"><div class="jc-route">Denver ↔ Rocky Mountain NP</div><div class="jc-detail">🚗 Rental car · 1 large SUV + 1 sedan · 90 min each way</div></div><div class="jc-date">Jul 15–25</div></div>
+        <div class="journey-card" onclick="focusJourney(3)"><div class="jc-dot" style="background:#F59E0B"></div><div class="jc-info"><div class="jc-route">Denver → San Francisco</div><div class="jc-detail">✈️ Domestic flight · direct · ~2.5h</div></div><div class="jc-date">Jul 25</div></div>
+        <div class="journey-card" onclick="focusJourney(4)"><div class="jc-dot" style="background:#F59E0B"></div><div class="jc-info"><div class="jc-route">San Francisco → New York City</div><div class="jc-detail">✈️ Domestic flight · direct · ~5.5h</div></div><div class="jc-date">Aug 15</div></div>
+        <div class="journey-card" onclick="focusJourney(5)"><div class="jc-dot" style="background:#34D399"></div><div class="jc-info"><div class="jc-route">New York City → Washington, D.C.</div><div class="jc-detail">🚆 Amtrak Acela First Class · ~3h (or ✈️ ~1.5h)</div></div><div class="jc-date">Aug 29</div></div>
+        <div class="journey-card" onclick="focusJourney(6)"><div class="jc-dot" style="background:#60A5FA"></div><div class="jc-info"><div class="jc-route">Washington, D.C. → Copenhagen</div><div class="jc-detail">✈️ International flight · SAS direct or connect · ~9.5h</div></div><div class="jc-date">Sep 7</div></div>
       </div>
     </div>
 
-    <!-- City stay durations -->
     <div class="map-legend">
       <div class="label">Time at Each Destination</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
         <div style="flex:1 1 140px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:10px 12px;text-align:center">
           <div style="font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">D.C. (total)</div>
-          <div style="font-size:22px;font-weight:800;font-family:'Playfair Display',serif;color:#C9A84C;margin-top:2px">33</div>
+          <div style="font-size:22px;font-weight:800;font-family:'Playfair Display',serif;color:#C9A84C;margin-top:2px">12</div>
           <div style="font-size:10px;color:rgba(255,255,255,0.35)">nights</div>
         </div>
         <div style="flex:1 1 140px;background:rgba(232,168,56,0.1);border:1px solid rgba(232,168,56,0.2);border-radius:8px;padding:10px 12px;text-align:center">
-          <div style="font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">Parks</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">Rocky Mountain</div>
           <div style="font-size:22px;font-weight:800;font-family:'Playfair Display',serif;color:#E8A838;margin-top:2px">10</div>
           <div style="font-size:10px;color:rgba(255,255,255,0.35)">nights</div>
         </div>
         <div style="flex:1 1 140px;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.15);border-radius:8px;padding:10px 12px;text-align:center">
           <div style="font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">San Francisco</div>
-          <div style="font-size:22px;font-weight:800;font-family:'Playfair Display',serif;color:#FFD700;margin-top:2px">7</div>
+          <div style="font-size:22px;font-weight:800;font-family:'Playfair Display',serif;color:#FFD700;margin-top:2px">21</div>
           <div style="font-size:10px;color:rgba(255,255,255,0.35)">nights</div>
         </div>
         <div style="flex:1 1 140px;background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.2);border-radius:8px;padding:10px 12px;text-align:center">
           <div style="font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">New York</div>
-          <div style="font-size:22px;font-weight:800;font-family:'Playfair Display',serif;color:#FF6B35;margin-top:2px">7</div>
+          <div style="font-size:22px;font-weight:800;font-family:'Playfair Display',serif;color:#FF6B35;margin-top:2px">14</div>
           <div style="font-size:10px;color:rgba(255,255,255,0.35)">nights</div>
         </div>
       </div>
@@ -683,7 +643,6 @@
 </div><!-- /container -->
 
 <script>
-// ===== TAB SWITCHING =====
 function switchTab(tab) {
   document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -693,7 +652,6 @@ function switchTab(tab) {
   if (tab === 'map' && window.tripMap) window.tripMap.invalidateSize();
 }
 
-// ===== LEG CARD TOGGLING =====
 function toggleLeg(el) {
   const wasActive = el.classList.contains('active');
   document.querySelectorAll('.leg').forEach(leg => {
@@ -711,34 +669,31 @@ function toggleLeg(el) {
   }
 }
 
-// Initialize first card
 document.addEventListener('DOMContentLoaded', () => {
   const first = document.querySelector('.leg.active');
   if (first) first.style.background = getComputedStyle(document.documentElement).getPropertyValue('--dc');
 });
 
-// ===== MAP =====
 const CITIES = {
   CPH: { name: "Copenhagen", lat: 55.6761, lng: 12.5683, icon: "🇩🇰" },
   IAD: { name: "Washington, D.C.", lat: 38.9072, lng: -77.0369, icon: "🏛️" },
-  FCA: { name: "Kalispell / Whitefish", lat: 48.3105, lng: -114.2553, icon: "🏔️" },
-  GNP: { name: "Glacier NP", lat: 48.7596, lng: -113.7870, icon: "⛰️" },
-  MGL: { name: "Many Glacier", lat: 48.7967, lng: -113.6567, icon: "🦌" },
+  DEN: { name: "Denver", lat: 39.8561, lng: -104.6737, icon: "✈️" },
+  RMNP: { name: "Rocky Mountain NP", lat: 40.3428, lng: -105.6836, icon: "🏔️" },
+  EP: { name: "Estes Park", lat: 40.3772, lng: -105.5217, icon: "🦌" },
   SFO: { name: "San Francisco", lat: 37.7749, lng: -122.4194, icon: "🌉" },
   JFK: { name: "New York City", lat: 40.7128, lng: -74.0060, icon: "🗽" },
 };
 
 const JOURNEYS = [
   { from: "CPH", to: "IAD", color: "#60A5FA", type: "intl-flight", label: "CPH → IAD", date: "Jul 12", mode: "✈️ International" },
-  { from: "IAD", to: "FCA", color: "#F59E0B", type: "dom-flight", label: "IAD → FCA", date: "Jul 15", mode: "✈️ Domestic" },
-  { from: "FCA", to: "GNP", color: "#F87171", type: "car", label: "Park drives", date: "Jul 15–25", mode: "🚗 Car" },
-  { from: "FCA", to: "SFO", color: "#F59E0B", type: "dom-flight", label: "FCA → SFO", date: "Jul 25", mode: "✈️ Domestic" },
-  { from: "SFO", to: "JFK", color: "#F59E0B", type: "dom-flight", label: "SFO → JFK", date: "Aug 1", mode: "✈️ Domestic" },
-  { from: "JFK", to: "IAD", color: "#34D399", type: "train", label: "NYC → DC", date: "Aug 8", mode: "🚆 Train" },
+  { from: "IAD", to: "DEN", color: "#F59E0B", type: "dom-flight", label: "IAD → DEN", date: "Jul 15", mode: "✈️ Domestic" },
+  { from: "DEN", to: "RMNP", color: "#F87171", type: "car", label: "Park drives", date: "Jul 15–25", mode: "🚗 Car" },
+  { from: "DEN", to: "SFO", color: "#F59E0B", type: "dom-flight", label: "DEN → SFO", date: "Jul 25", mode: "✈️ Domestic" },
+  { from: "SFO", to: "JFK", color: "#F59E0B", type: "dom-flight", label: "SFO → JFK", date: "Aug 15", mode: "✈️ Domestic" },
+  { from: "JFK", to: "IAD", color: "#34D399", type: "train", label: "NYC → DC", date: "Aug 29", mode: "🚆 Train" },
   { from: "IAD", to: "CPH", color: "#60A5FA", type: "intl-flight", label: "IAD → CPH", date: "Sep 7", mode: "✈️ International" },
 ];
 
-// Curved line between two points (great circle approximation)
 function getCurvedPoints(from, to, numPoints, curvature) {
   const points = [];
   const fromC = CITIES[from];
@@ -747,7 +702,6 @@ function getCurvedPoints(from, to, numPoints, curvature) {
     const t = i / numPoints;
     const lat = fromC.lat + (toC.lat - fromC.lat) * t;
     const lng = fromC.lng + (toC.lng - fromC.lng) * t;
-    // Add curvature perpendicular to the line
     const offset = Math.sin(Math.PI * t) * curvature;
     const dx = toC.lng - fromC.lng;
     const dy = toC.lat - fromC.lat;
@@ -762,78 +716,48 @@ function getCurvedPoints(from, to, numPoints, curvature) {
 let journeyLines = [];
 
 function initMap() {
-  const map = L.map('map-container', {
-    zoomControl: true,
-    scrollWheelZoom: true,
-  }).setView([42, -40], 3);
-
-  // Dark tile layer
+  const map = L.map('map-container', { zoomControl: true, scrollWheelZoom: true }).setView([42, -40], 3);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19
+    subdomains: 'abcd', maxZoom: 19
   }).addTo(map);
 
-  // Draw journey lines
   JOURNEYS.forEach((j, idx) => {
     const fromC = CITIES[j.from];
     const toC = CITIES[j.to];
-
-    // Calculate curvature based on distance
     const dx = toC.lng - fromC.lng;
     const dy = toC.lat - fromC.lat;
     const dist = Math.sqrt(dx*dx + dy*dy);
     let curvature = dist * 0.15;
     if (j.type === 'car') curvature = dist * 0.05;
     if (j.type === 'train') curvature = dist * 0.2;
-
     const points = getCurvedPoints(j.from, j.to, 50, curvature);
-
     const isDashed = (j.type === 'car' || j.type === 'train');
     const line = L.polyline(points, {
-      color: j.color,
-      weight: j.type === 'intl-flight' ? 3 : 2.5,
-      opacity: 0.8,
-      dashArray: isDashed ? '8, 6' : null,
-      lineCap: 'round',
+      color: j.color, weight: j.type === 'intl-flight' ? 3 : 2.5,
+      opacity: 0.8, dashArray: isDashed ? '8, 6' : null, lineCap: 'round',
     }).addTo(map);
-
     line.bindPopup(`<strong>${j.label}</strong><br>${j.mode}<br>${j.date}`, { className: 'dark-popup' });
-
     journeyLines.push({ line, from: j.from, to: j.to });
   });
 
-  // Draw city markers
-  const mainCities = ["CPH", "IAD", "FCA", "SFO", "JFK"];
-  const parkLocations = ["GNP", "MGL"];
+  const mainCities = ["CPH", "IAD", "DEN", "SFO", "JFK"];
+  const parkLocations = ["RMNP", "EP"];
 
   [...mainCities, ...parkLocations].forEach(key => {
     const c = CITIES[key];
     const isMain = mainCities.includes(key);
     const size = isMain ? 36 : 24;
-
     const icon = L.divIcon({
-      html: `<div style="
-        width:${size}px;height:${size}px;
-        background:${isMain ? 'rgba(201,168,76,0.9)' : 'rgba(232,168,56,0.7)'};
-        border-radius:50%;display:flex;align-items:center;justify-content:center;
-        font-size:${isMain ? 18 : 14}px;
-        box-shadow:0 2px 12px rgba(0,0,0,0.5);
-        border:2px solid rgba(255,255,255,${isMain ? 0.3 : 0.15});
-      ">${c.icon}</div>`,
-      iconSize: [size, size],
-      iconAnchor: [size/2, size/2],
-      className: ''
+      html: `<div style="width:${size}px;height:${size}px;background:${isMain ? 'rgba(201,168,76,0.9)' : 'rgba(232,168,56,0.7)'};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:${isMain ? 18 : 14}px;box-shadow:0 2px 12px rgba(0,0,0,0.5);border:2px solid rgba(255,255,255,${isMain ? 0.3 : 0.15});">${c.icon}</div>`,
+      iconSize: [size, size], iconAnchor: [size/2, size/2], className: ''
     });
-
     const marker = L.marker([c.lat, c.lng], { icon }).addTo(map);
     marker.bindPopup(`<strong>${c.name}</strong>`, { className: 'dark-popup' });
   });
 
   window.tripMap = map;
   window.mapInitialized = true;
-
-  // Fit to show all points
   const allPoints = Object.values(CITIES).map(c => [c.lat, c.lng]);
   map.fitBounds(allPoints, { padding: [40, 40] });
 }
@@ -844,18 +768,11 @@ function focusJourney(idx) {
   if (!j) return;
   const fromC = CITIES[j.from];
   const toC = CITIES[j.to];
-  const bounds = L.latLngBounds([
-    [fromC.lat, fromC.lng],
-    [toC.lat, toC.lng]
-  ]);
+  const bounds = L.latLngBounds([[fromC.lat, fromC.lng], [toC.lat, toC.lng]]);
   window.tripMap.fitBounds(bounds, { padding: [60, 60], maxZoom: 7 });
   j.line.openPopup();
-
-  // Flash the line
   j.line.setStyle({ weight: 5, opacity: 1 });
-  setTimeout(() => {
-    j.line.setStyle({ weight: j.line.options.dashArray ? 2.5 : 3, opacity: 0.8 });
-  }, 1500);
+  setTimeout(() => { j.line.setStyle({ weight: j.line.options.dashArray ? 2.5 : 3, opacity: 0.8 }); }, 1500);
 }
 </script>
 
